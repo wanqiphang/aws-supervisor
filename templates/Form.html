@@ -19,6 +19,30 @@
 		"@type": "Organization",
 		"name": ""
 }</script>
+
+<script>
+  // Get the button and message elements by their IDs
+  var viewReportButton = document.getElementById("view-report-button");
+  var noFileMessage = document.getElementById("no-file-message");
+
+  // Add a click event listener to the button
+  viewReportButton.addEventListener("click", function(event) {
+      // Check if there's no file uploaded (you may need to modify this condition)
+      var noFileUploaded = true; // Replace this with your actual condition
+      
+      if (noFileUploaded) {
+          // Prevent the default link behavior
+          event.preventDefault();
+
+          // Hide the button
+          viewReportButton.style.display = "none";
+
+          // Show the "No file uploaded" message
+          noFileMessage.style.display = "inline";
+      }
+  });
+</script>
+
     <meta name="theme-color" content="#478ac9">
     <meta property="og:title" content="Form">
     <meta property="og:type" content="website">
@@ -69,11 +93,10 @@
             <tr style="height: 28px;">
                 <td class="u-table-cell">{{ student[0] }}</td>
                 <td class="u-table-cell">{{ student[1] }}</td>
-                {% if student[3] %}
-                    <a class="u-active-grey-60 u-border-1 u-border-active-grey-60 u-border-grey-60 u-border-hover-grey-60 u-btn u-button-style u-hover-grey-60 u-white u-btn-2" href="#" target="_blank">View Report</a>
-                {% else %}
-                    No file uploaded
-                {% endif %}
+                <td class="u-table-cell">
+                  <span id="no-file-message" style="display: none;">No file uploaded</span>
+                  <a class="u-active-grey-60 u-border-1 u-border-active-grey-60 u-border-grey-60 u-border-hover-grey-60 u-btn u-button-style u-hover-grey-60 u-white u-btn-2" href="javascript:void(0);" id="view-report-button">View Report</a>
+                </td>
             </tr>
             {% endfor %}
           </tbody>
