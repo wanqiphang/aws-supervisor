@@ -53,7 +53,7 @@ def indexSupervisor():
 @app.route("/Form")
 def Form():
     cursor = db_conn.cursor()
-    cursor.execute('SELECT (student_name, student_id) FROM StudentInfo')
+    cursor.execute('SELECT student_name, student_id FROM StudentInfo')
     data = cursor.fetchall()
     cursor.close()
     
